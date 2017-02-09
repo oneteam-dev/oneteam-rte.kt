@@ -14,6 +14,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'jacoco-android'
 
 repositories {
+    mavenCentral()
     maven { url "http://dl.bintray.com/jetbrains/spek" }
 }
 
@@ -23,6 +24,7 @@ project.version = scmVersion.version
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testCompile 'junit:junit:4.12'
 }
 
@@ -40,6 +42,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
     }
 }
 
