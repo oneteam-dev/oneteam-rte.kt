@@ -17,7 +17,7 @@ export default class Editor extends Component {
         this.setState({ placeholder: value });
     }
     get placeholder() {
-        return this.state.placeholder || Body.defaultProps.placeholder;
+        return this.state.placeholder || RichTextEditor.defaultProps.placeholder;
     }
     setEditor(editor) {
         this.editor = editor;
@@ -108,9 +108,7 @@ export default class Editor extends Component {
             <div style={{ paddingTop: this.state.paddingTop }}>
               <RichTextEditor
                   onChange={() => { this.triggerOnChange() }}
-                  ref={(c) => this.setEditor(c)}>
-                  <Body placeholder={this.placeholder} />
-              </RichTextEditor>
+                  ref={(c) => this.setEditor(c)} />
             </div>
         )
     }

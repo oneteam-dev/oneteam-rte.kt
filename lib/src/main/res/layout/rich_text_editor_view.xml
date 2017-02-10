@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.one_team.oneteam_rte_kt.RichTextEditorView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</io.one_team.oneteam_rte_kt.RichTextEditorView>
+        android:layout_height="match_parent"/>
+</LinearLayout>
