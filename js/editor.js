@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RichTextEditor, { Body } from 'oneteam-rte';
+import RichTextEditor from 'oneteam-rte';
 
 export default class Editor extends Component {
     constructor(props) {
@@ -74,16 +74,6 @@ export default class Editor extends Component {
         }
         return "";
     }
-    setCallbackToken(callbackToken) {
-        this.setState({callbackToken});
-        window.webkit.messageHandlers.didSetCallbackToken.postMessage(callbackToken);
-    }
-    debugLog(data) {
-        if(console.debug) {
-          console.debug(data);
-        }
-        window.webkit.messageHandlers.debugLog.postMessage(data);
-    }
     getHTML() {
         if(this.editor) {
           return this.editor.html;
@@ -95,13 +85,17 @@ export default class Editor extends Component {
           this.editor.html = html;
         }
     }
+    setCallbackToken(callbackToken) {
+        this.setState({callbackToken});
+        AndroidInterface.setCallbackToken(callbackToken);
+    }
     triggerOnChange() {
         const data = {
             inlineStyles: this.getCurrentInlineStyles(),
             blockType: this.getCurrentBlockType(),
             html: this.editor.html
         };
-        window.webkit.messageHandlers.didChangeEditorState.postMessage(data);
+        AndroidInterface.didChangeEditorState(data);
     }
     render() {
         return (
