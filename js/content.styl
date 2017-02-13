@@ -1,0 +1,313 @@
+@font-face
+    font-family 'Noto Sans Japanese'
+    font-style normal
+    font-weight 100
+    src url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Thin.woff2) format('woff2'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Thin.woff) format('woff'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Thin.otf) format('opentype')
+
+@font-face
+    font-family 'Noto Sans Japanese'
+    font-style normal
+    font-weight 200
+    src url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Light.woff2) format('woff2'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Light.woff) format('woff'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Light.otf) format('opentype')
+
+@font-face
+    font-family 'Noto Sans Japanese'
+    font-style normal
+    font-weight 300
+    src url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.woff2) format('woff2'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.woff) format('woff'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-DemiLight.otf) format('opentype')
+
+@font-face
+    font-family 'Noto Sans Japanese'
+    font-style normal
+    font-weight 400
+    src local('NotoSansJP-Regular.otf'),
+        url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Regular.woff2) format('woff2'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Regular.woff) format('woff'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Regular.otf) format('opentype')
+
+@font-face
+    font-family 'Noto Sans Japanese'
+    font-style normal
+    font-weight 500
+    src url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Medium.woff2) format('woff2'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Medium.woff) format('woff'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Medium.otf) format('opentype')
+
+@font-face
+    font-family 'Noto Sans Japanese'
+    font-style normal
+    font-weight 700
+    src url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.woff2) format('woff2'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.woff) format('woff'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.otf) format('opentype')
+
+@font-face
+    font-family 'Noto Sans Japanese'
+    font-style normal
+    font-weight 900
+    src url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Black.woff2) format('woff2'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Black.woff) format('woff'), url(https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Black.otf) format('opentype')
+
+#html
+    width 100%
+
+#body
+    width 100%
+    margin 0
+    font-size 14px
+    line-height 24px
+    color #878787
+    font-family 'Noto Sans Japanese', 'Roboto' sans-serif
+    word-wrap break-word
+    h1
+        font-size 30px
+        line-height 34px
+    h2
+        font-size 25px
+        line-height 32px
+    h3
+        font-size 20px
+        line-height 26px
+    h4
+        font-size 16px
+        line-height 26px
+    h5
+        font-size 14px
+        line-height 26px
+    a
+        color #00aeef
+        &:hover
+            color #71d9ff
+            text-decoration none
+    blockquote
+        padding 0 15px
+        margin 25px 0
+        font-size 18px
+        border-left 2px solid rgba(0,0,0,.3)
+        line-height 1.5
+    .task-list-item
+        list-style none
+        margin-left -22px
+        line-height 30px
+        & > ul
+            padding-left 40px
+        & > li
+            & > ul
+                padding-left 60px
+                & > li
+                    & > ul
+                        padding-left 80px
+                        & > li
+                            & > ul
+                                padding-left 100px
+                                & > li
+                                    & > ul
+                                        padding-left 120px
+                                        & > li
+                                            & > ul
+                                                padding-left 140px
+        input
+            width 20px
+            height 20px
+            border 1px solid #d5cdcd
+            background-color #fff
+            border-radius 50%
+            vertical-align middle
+            margin-right 8px
+            -webkit-appearance none
+            &:checked
+                position relative
+                border-color #009cd6
+                background-color rgba(0,174,239,.8)
+                &:before
+                    position absolute
+                    content "\2713"
+                    width 6px
+                    height 10px
+                    top 0px
+                    left 4px
+                    color #fff
+                & + span
+                    text-decoration line-through
+                    color #d6d6d6
+    pre
+        max-width 100%
+        padding 15px
+        background-color #f9f9f9
+        border 1px solid #e3e3e3
+        word-wrap break-word
+        overflow-wrap break-word
+        white-space pre-wrap
+    code
+        max-width 100%
+        display block
+        word-wrap break-word
+        overflow-wrap break-word
+        white-space pre-wrap
+    figure
+        margin 14px 0
+    iframe
+        max-width 100%
+        margin 0
+    img
+        max-width 100%
+    table
+        thead
+            border-bottom 2px solid rgba(0,0,0,.05)
+
+#body h1, #body h2, #body h3, #body h4, #body h5, #body h6
+    line-height 1.5
+    font-weight 400
+    color #000
+
+#body>h1:first-child, #body h2:first-child, #body h3:first-child, #body h4:first-child, #body h5:first-child, #body h6:first-child
+    margin-top 0
+
+#body ol, #body ul
+    line-height 24px
+    padding 0 0 0 20px
+
+#body>ol, #body>ul
+    margin 16px 0
+
+#body table td, #body table th
+    padding 10px
+    border-bottom 1px solid rgba(0,0,0,.05)
+
+.webcard,.webcard-errors,.webcard-loading-spinner
+    width 320px
+    height 130px
+    border 1px solid #eee
+    border-radius 5px
+    display block
+    overflow hidden
+
+web-card
+    &:empty
+        display none
+
+.webcard
+    text-decoration none
+    text-overflow ellipsis
+    max-width 100%
+    position relative
+    z-index 1
+    width auto
+    height auto
+    box-shadow 0 1px 3px rgba(1,1,1,.1)
+    p
+        margin 0
+    .image
+        margin-right 10px
+        width 100%
+        height 120px
+        background-position 50%
+        background-size cover
+        background-repeat no-repeat
+        position relative
+        z-index 1
+        &.remove
+            display none
+            position absolute
+            z-index 2
+            top 5px
+            right 5px
+            cursor pointer
+            line-height 1
+        .remove
+            .icon
+                max-width 8px
+                max-height 8px
+                margin 0
+                vertical-align top
+        .overlay
+            display none
+            position absolute
+            z-index 1
+            width 100%
+            height 100%
+            top 0
+            left 0
+            background-color rgba(0,0,0,.5)
+    .text
+        padding 0 14px
+        word-break break-word
+    .title
+        height 32px
+        line-height 40px
+        font-weight 700
+        font-size 14px
+        overflow hidden
+    .description
+        color rgba(0,0,0,.6)
+        font-size 12px
+        line-height 15px
+        max-height 45px
+        overflow hidden
+    .url
+        font-size 12px
+        color rgba(0,0,0,.2)
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+        right 0
+        bottom 0
+        width 100%
+        left 0
+        padding 2px 0 0
+        vertical-align middle
+    &:focus
+        text-decoration none
+
+.webcard .image:hover .overlay,
+.webcard .image:hover
+.remove
+    display block
+
+a
+    &.webcard
+        &:hover
+            box-shadow 0 2px 5px rgba(1,1,1,.15)
+            color #00aeef!important
+            &:before
+                opacity .2
+
+.webcard-loading-spinner
+    text-align center
+    padding-top 50px
+    color #aaa
+
+.diff-html-added
+    display inline-block !important
+    background #d0eeb2
+
+.diff-html-removed
+    display inline-block !important
+    background rgba(219, 107, 107, 0.3)
+    text-decoration line-through
+
+.diff-html-changed
+    display inline-block !important
+    background #d0eeb2
+
+.diff-tag-added
+    display inline-block !important
+    background #d0eeb2
+
+.diff-tag-removed
+    display inline-block !important
+    background rgba(219, 107, 107, 0.3)
+    text-decoration line-through
+
+@media (min-width: 600px)
+    .webcard
+        .image
+            height 100px
+            width 100px
+            float left
+            margin 0
+            margin-right 14px
+        .title
+            height 40px
+            line-height 50px
+        .text
+            min-height 75px
+        .description
+            height 36px
+            overflow hidden
+        .url
+            width auto
+            vertical-align bottom

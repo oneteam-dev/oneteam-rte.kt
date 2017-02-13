@@ -91,6 +91,7 @@ export default class Editor extends Component {
             blockType: this.getCurrentBlockType(),
             html: this.editor.html
         };
+        console.log(data);
         AndroidInterface.didChangeEditorState(data);
     }
     render() {

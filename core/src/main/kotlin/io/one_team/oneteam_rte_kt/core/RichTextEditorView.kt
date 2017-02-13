@@ -1,7 +1,9 @@
 package io.one_team.oneteam_rte_kt.core
 
 import android.content.Context
+import android.os.Handler
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
@@ -26,10 +28,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
 
-        webView.loadUrl("file:///android_asset/index.html")
-        webView.settings.javaScriptEnabled = true
-        webView.addJavascriptInterface(JSInterface(), "AndroidInterface")
-        webView.setPlaceholder("")
+        setupWebView()
 
         setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus) webView.focus() else webView.blur()
@@ -101,9 +100,15 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
         webView.insertFileDownload(json)
     }
 
-    private inner class JSInterface {
-        @JavascriptInterface fun didChangeEditorState(state: String?): Unit {
+    private fun setupWebView() {
+        webView.loadUrl("file:///android_asset/index.html")
+        webView.settings.javaScriptEnabled = true
+        webView.addJavascriptInterface(JSInterface(), "AndroidInterface")
+    }
 
+    private inner class JSInterface {
+        @JavascriptInterface fun didChangeEditorState(state: String): Unit {
+            Log.d("JSInterface", state)
         }
     }
 }
