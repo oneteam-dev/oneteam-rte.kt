@@ -11,7 +11,7 @@ fun WebView.toggleInlineStyle(type: String) = runScript("""window.editor.toggleI
 fun WebView.insertLink(url: String) = runScript("""window.editor.toggleLink("$url")""")
 fun WebView.removeLink() = runScript("""window.editor.toggleLink(null)""")
 fun WebView.insertIFrame(src: String) = runScript("""window.editor.insertIFrame("$src")""")
-fun WebView.insertImage(imgJson: String) = runScript("""window.editor.insertImage("$imgJson")""")
-fun WebView.insertFileDownload(fileJson: String) = runScript("""window.editor.insertDownloadLink("$fileJson")""")
+fun WebView.insertImage(imgJson: String) = runScript("""window.editor.insertImage($imgJson)""")
+fun WebView.insertFileDownload(fileJson: String) = runScript("""window.editor.insertDownloadLink($fileJson)""")
 
 private fun WebView.runScript(script: String) = loadUrl("javascript: $script")

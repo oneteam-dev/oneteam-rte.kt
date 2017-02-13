@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import RichTextEditor from 'oneteam-rte';
 
+const FileLink = props => {
+  return <div>
+      <a href={props.blockProps.url}>
+          {props.blockProps.name}
+      </a>
+  </div>;
+};
+
 export default class Editor extends Component {
     constructor(props) {
         super(props);
@@ -34,17 +42,17 @@ export default class Editor extends Component {
     }
     insertImage(...args) {
         if(this.editor) {
-            this.editor._insertImage(...args);
+            this.editor.insertImageAtomicBlock(...args);
         }
     }
     insertDownloadLink(...args) {
         if(this.editor) {
-            this.editor._insertDownloadLink(...args);
+            this.editor.insertAtomicBlock('FILE_PLACEHOLDER', 'IMMUTABLE', ...args);
         }
     }
-    insertIFrame(iframeTag) {
+    insertIFrame(tag) {
         if(this.editor) {
-            this.editor._insertIFrame(iframeTag); // FIXME: DO NOT call private method
+            this.editor.insertIFrameAtomicBlock(tag);
         }
     }
     toggleLink(url = null) {
@@ -91,7 +99,6 @@ export default class Editor extends Component {
             blockType: this.getCurrentBlockType(),
             html: this.editor.html
         };
-        console.log(data);
         AndroidInterface.didChangeEditorState(data);
     }
     render() {
@@ -99,6 +106,7 @@ export default class Editor extends Component {
             <div style={{ paddingTop: this.state.paddingTop }}>
               <RichTextEditor
                   onChange={() => { this.triggerOnChange() }}
+                  atomicBlockRenderMap={{["FILE_PLACEHOLDER"]: FileLink}}
                   ref={(c) => this.setEditor(c)} />
             </div>
         )

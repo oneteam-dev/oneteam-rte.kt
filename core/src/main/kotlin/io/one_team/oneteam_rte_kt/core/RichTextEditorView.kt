@@ -6,7 +6,9 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.webkit.JavascriptInterface
+import android.webkit.WebChromeClient
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.rich_text_editor_view.view.*
 import java.net.URL
@@ -73,7 +75,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
      * Remove link href from selected text
      */
     fun removeLink() {
-        webView.removeLink(null)
+        webView.removeLink()
     }
 
     /**
@@ -82,7 +84,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
      * @param src iframe code you want to insert in html
      */
     fun insertIFrame(src: String) {
-        webView.insertIFrame(src)
+        webView.insertIFrame(src.replace("\"", "\\\""))
     }
 
     /**
@@ -92,25 +94,27 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
      * @param url file url
      */
     fun insertFile(name: String, url: URL) {
-        val json = """{""name": "$name", "download_url": "$url"}"""
-        webView.insertImage(json)
+        val json = """{"name": "$name", "url": "$url"}"""
+        webView.insertFileDownload(json)
     }
 
     /**
      * Insert a image
      * @param name image name that will be used by alt attribute etc...
      * @param url image url that will be shown by clicking image
-     * @param previewURL image url that will be shown in editor as thumbnail
      */
-    fun insertImage(name: String, url: URL, previewURL: URL) {
-        val json = """{""name": "$name", "original_url": "$url", "preview_url": "$previewURL" }"""
-        webView.insertFileDownload(json)
+    fun insertImage(name: String, url: URL) {
+        val json = """{"alt": "$name", "title": "$name", "url": "$url"}"""
+        webView.insertImage(json)
     }
 
     private fun setupWebView() {
+        WebView.setWebContentsDebuggingEnabled(true)
         webView.loadUrl("file:///android_asset/index.html")
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(JSInterface(), "AndroidInterface")
+        webView.setWebViewClient(WebViewClient())
+        webView.setWebChromeClient(WebChromeClient())
     }
 
     private inner class JSInterface {

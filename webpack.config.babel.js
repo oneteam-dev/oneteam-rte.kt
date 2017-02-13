@@ -16,7 +16,7 @@ export default {
   entry,
   cache: true,
   output: {
-    path: path.resolve(__dirname, 'lib/src/main/assets'),
+    path: path.resolve(__dirname, 'core/src/main/assets'),
     filename: 'bundle.js'
   },
   resolve: {

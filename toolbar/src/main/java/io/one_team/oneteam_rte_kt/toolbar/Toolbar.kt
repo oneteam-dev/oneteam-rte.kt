@@ -3,7 +3,6 @@ package io.one_team.oneteam_rte_kt.toolbar
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.LinearLayout
 import io.one_team.oneteam_rte_kt.core.BlockStyle
 import io.one_team.oneteam_rte_kt.core.InlineStyle
@@ -17,20 +16,20 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
         LayoutInflater.from(context).inflate(R.layout.toolbar_view, this)
     }
 
-    fun addOnClickImageButtonListener(listener: View.OnClickListener) {
-        imageButton.setOnClickListener(listener)
+    fun addOnClickImageButtonListener(listener: () -> Unit) {
+        imageButton.setOnClickListener { listener() }
     }
 
-    fun addOnClickFileButtonListener(listener: View.OnClickListener) {
-        fileButton.setOnClickListener(listener)
+    fun addOnClickFileButtonListener(listener: () -> Unit) {
+        fileButton.setOnClickListener { listener() }
     }
 
-    fun addOnClickInsertLinkButtonListener(listener: View.OnClickListener) {
-        insertLinkButton.setOnClickListener(listener)
+    fun addOnClickInsertLinkButtonListener(listener: () -> Unit) {
+        insertLinkButton.setOnClickListener { listener() }
     }
 
-    fun addIFrameButtonListener(listener: View.OnClickListener) {
-        iframeButton.setOnClickListener(listener)
+    fun addIFrameButtonListener(listener: () -> Unit) {
+        iframeButton.setOnClickListener { listener() }
     }
 
     override fun onAttachedToWindow() {
