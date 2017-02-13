@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import io.one_team.oneteam_rte_kt.core.BlockStyle
 import io.one_team.oneteam_rte_kt.core.RichTextEditorView
 import kotlinx.android.synthetic.main.toolbar_view.view.*
 
@@ -19,11 +20,11 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
 
         imageButton.setOnClickListener { }
         fileButton.setOnClickListener { }
-        h1Button.setOnClickListener { }
-        h2Button.setOnClickListener { }
-        h3Button.setOnClickListener { }
-        h4Button.setOnClickListener { }
-        h5Button.setOnClickListener { }
+        h1Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading1) }
+        h2Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading2) }
+        h3Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading3) }
+        h4Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading4) }
+        h5Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading5) }
         boldButton.setOnClickListener { }
         italicButton.setOnClickListener { }
         codeButton.setOnClickListener { }
