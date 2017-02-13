@@ -9,6 +9,7 @@ fun WebView.setHTML(html: String) = runScript("""window.editor.setHTML("$html")"
 fun WebView.toggleBlockType(type: String) = runScript("""window.editor.toggleBlockType("$type")""")
 fun WebView.toggleInlineStyle(type: String) = runScript("""window.editor.toggleInlineStyle("$type")""")
 fun WebView.insertLink(url: String) = runScript("""window.editor.toggleLink("$url")""")
+fun WebView.removeLink() = runScript("""window.editor.toggleLink(null)""")
 fun WebView.insertIFrame(src: String) = runScript("""window.editor.insertIFrame("$src")""")
 fun WebView.insertImage(imgJson: String) = runScript("""window.editor.insertImage("$imgJson")""")
 fun WebView.insertFileDownload(fileJson: String) = runScript("""window.editor.insertDownloadLink("$fileJson")""")

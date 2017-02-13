@@ -70,6 +70,13 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
     }
 
     /**
+     * Remove link href from selected text
+     */
+    fun removeLink() {
+        webView.removeLink(null)
+    }
+
+    /**
      * Insert iframe code
      *
      * @param src iframe code you want to insert in html

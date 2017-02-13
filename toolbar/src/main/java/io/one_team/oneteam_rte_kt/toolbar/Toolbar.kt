@@ -3,6 +3,7 @@ package io.one_team.oneteam_rte_kt.toolbar
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.LinearLayout
 import io.one_team.oneteam_rte_kt.core.BlockStyle
 import io.one_team.oneteam_rte_kt.core.InlineStyle
@@ -16,11 +17,25 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
         LayoutInflater.from(context).inflate(R.layout.toolbar_view, this)
     }
 
+    fun addOnClickImageButtonListener(listener: View.OnClickListener) {
+        imageButton.setOnClickListener(listener)
+    }
+
+    fun addOnClickFileButtonListener(listener: View.OnClickListener) {
+        fileButton.setOnClickListener(listener)
+    }
+
+    fun addOnClickInsertLinkButtonListener(listener: View.OnClickListener) {
+        insertLinkButton.setOnClickListener(listener)
+    }
+
+    fun addIFrameButtonListener(listener: View.OnClickListener) {
+        iframeButton.setOnClickListener(listener)
+    }
+
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
 
-        imageButton.setOnClickListener { }
-        fileButton.setOnClickListener { }
         h1Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading1) }
         h2Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading2) }
         h3Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading3) }
@@ -34,9 +49,7 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
         checkListButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.CheckableListItem) }
         listButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.UnorderedListItem) }
         orderedListButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.OrderedListItem) }
-        insertLinkButton.setOnClickListener { }
-        removeLinkButton.setOnClickListener { }
-        iframeButton.setOnClickListener { }
+        removeLinkButton.setOnClickListener { editor?.removeLink() }
         codeBlockButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.CodeBlock) }
     }
 
