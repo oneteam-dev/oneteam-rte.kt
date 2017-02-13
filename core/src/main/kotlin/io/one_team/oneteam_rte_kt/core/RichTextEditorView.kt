@@ -1,4 +1,4 @@
-package io.one_team.oneteam_rte_kt
+package io.one_team.oneteam_rte_kt.core
 
 import android.content.Context
 import android.util.AttributeSet

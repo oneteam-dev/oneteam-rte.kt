@@ -8,7 +8,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#a1bdea"
     tools:context="io.one_team.oneteam_rte_kt_sample.MainActivity">
-    <io.one_team.oneteam_rte_kt.RichTextEditorView
+    <io.one_team.oneteam_rte_kt.toolbar.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+    <io.one_team.oneteam_rte_kt.core.RichTextEditorView
+        android:id="@+id/editor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"/>
 </RelativeLayout>
