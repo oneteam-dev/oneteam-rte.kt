@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.webkit.JavascriptInterface
+import android.webkit.WebView
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.rich_text_editor_view.view.*
 import java.net.URL

@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import io.one_team.oneteam_rte_kt.core.BlockStyle
+import io.one_team.oneteam_rte_kt.core.InlineStyle
 import io.one_team.oneteam_rte_kt.core.RichTextEditorView
 import kotlinx.android.synthetic.main.toolbar_view.view.*
 
@@ -25,18 +26,18 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
         h3Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading3) }
         h4Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading4) }
         h5Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading5) }
-        boldButton.setOnClickListener { }
-        italicButton.setOnClickListener { }
-        codeButton.setOnClickListener { }
-        quoteButton.setOnClickListener { }
-        strikeThroughButton.setOnClickListener { }
-        checkListButton.setOnClickListener { }
-        listButton.setOnClickListener { }
-        orderedListButton.setOnClickListener { }
+        boldButton.setOnClickListener { editor?.toggleInlineStyle(InlineStyle.Bold) }
+        italicButton.setOnClickListener { editor?.toggleInlineStyle(InlineStyle.Italic) }
+        codeButton.setOnClickListener { editor?.toggleInlineStyle(InlineStyle.Code) }
+        quoteButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Blockquote) }
+        strikeThroughButton.setOnClickListener { editor?.toggleInlineStyle(InlineStyle.Strikethrough) }
+        checkListButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.CheckableListItem) }
+        listButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.UnorderedListItem) }
+        orderedListButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.OrderedListItem) }
         insertLinkButton.setOnClickListener { }
         removeLinkButton.setOnClickListener { }
         iframeButton.setOnClickListener { }
-        codeBlockButton.setOnClickListener { }
+        codeBlockButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.CodeBlock) }
     }
 
     override fun onDetachedFromWindow() {

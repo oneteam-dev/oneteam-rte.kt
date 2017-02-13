@@ -14,4 +14,5 @@ sealed class BlockStyle {
     object UnorderedListItem : BlockStyle() { override val stringValue = "unordered-list-item" }
     object CheckableListItem : BlockStyle() { override val stringValue = "checkable-list-item" }
     object Atomic : BlockStyle() { override val stringValue = "atomic" }
+    object CodeBlock: BlockStyle() { override val stringValue = "code-block" }
 }
