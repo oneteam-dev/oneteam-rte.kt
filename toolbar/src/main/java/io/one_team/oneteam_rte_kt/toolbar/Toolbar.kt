@@ -9,7 +9,6 @@ import kotlinx.android.synthetic.main.toolbar_view.view.*
 
 class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, attr) {
     var editor: RichTextEditorView? = null
-    var listeners: List<OnClickListener> = listOf()
 
     init {
         LayoutInflater.from(context).inflate(R.layout.toolbar_view, this)
@@ -41,6 +40,25 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        listeners.forEach { }
+
+        imageButton.setOnClickListener(null)
+        fileButton.setOnClickListener(null)
+        h1Button.setOnClickListener(null)
+        h2Button.setOnClickListener(null)
+        h3Button.setOnClickListener(null)
+        h4Button.setOnClickListener(null)
+        h5Button.setOnClickListener(null)
+        boldButton.setOnClickListener(null)
+        italicButton.setOnClickListener(null)
+        codeButton.setOnClickListener(null)
+        quoteButton.setOnClickListener(null)
+        strikeThroughButton.setOnClickListener(null)
+        checkListButton.setOnClickListener(null)
+        listButton.setOnClickListener(null)
+        orderedListButton.setOnClickListener(null)
+        insertLinkButton.setOnClickListener(null)
+        removeLinkButton.setOnClickListener(null)
+        iframeButton.setOnClickListener(null)
+        codeBlockButton.setOnClickListener(null)
     }
 }

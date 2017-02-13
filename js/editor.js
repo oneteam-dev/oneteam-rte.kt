@@ -85,10 +85,6 @@ export default class Editor extends Component {
           this.editor.html = html;
         }
     }
-    setCallbackToken(callbackToken) {
-        this.setState({callbackToken});
-        AndroidInterface.setCallbackToken(callbackToken);
-    }
     triggerOnChange() {
         const data = {
             inlineStyles: this.getCurrentInlineStyles(),
