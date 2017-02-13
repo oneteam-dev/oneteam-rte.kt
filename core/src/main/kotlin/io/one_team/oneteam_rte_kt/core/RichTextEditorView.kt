@@ -8,13 +8,16 @@ import android.webkit.WebView
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.rich_text_editor_view.view.*
 
-class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(context, attr) {
+class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(context, attr), JavascriptBridge {
     init {
         LayoutInflater.from(context).inflate(R.layout.rich_text_editor_view, this)
     }
 
+    override fun webView(): WebView? = webView
+
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
+
         WebView.setWebContentsDebuggingEnabled(true)
         webView.loadUrl("file:///android_asset/index.html")
         webView.settings.javaScriptEnabled = true

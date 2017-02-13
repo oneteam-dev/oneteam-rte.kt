@@ -3,7 +3,7 @@ package io.one_team.oneteam_rte_kt.core
 import android.webkit.WebView
 
 interface JavascriptBridge {
-    var webView: WebView
+    fun webView(): WebView?
 
     fun blur() {
         runScript("window.editor.blur()")
@@ -54,6 +54,6 @@ interface JavascriptBridge {
     }
 
     private fun runScript(script: String) {
-        webView.loadUrl("javascript: $script")
+        webView()?.loadUrl("javascript: $script")
     }
 }
