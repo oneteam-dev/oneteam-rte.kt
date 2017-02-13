@@ -4,18 +4,26 @@ buildscript {
     ext.kotlin_version = '1.0.6'
     repositories {
         jcenter()
+        mavenCentral()
     }
     dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
         classpath 'com.android.tools.build:gradle:2.2.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
     }
 }
+
+plugins { id 'pl.allegro.tech.build.axion-release' version '1.3.4' }
 apply plugin: 'kotlin'
+apply plugin: 'android-maven'
 
 allprojects {
     repositories {
         jcenter()
+        mavenCentral()
+        maven { url "http://dl.bintray.com/jetbrains/spek" }
     }
 }
 
@@ -29,6 +37,7 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testCompile 'junit:junit:4.12'
 }
 
 sourceSets {
