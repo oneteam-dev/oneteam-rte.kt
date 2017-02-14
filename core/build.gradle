@@ -2,16 +2,17 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'jacoco-android'
-
-group = 'io.one_team.oneteam-rte-kt.core'
-scmVersion.tag.prefix = ''
-project.version = scmVersion.version
+apply plugin: 'android-maven'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testCompile 'junit:junit:4.12'
 }
+
+group = 'com.github.oneteam-dev.oneteam-rte.kt'
+scmVersion.tag.prefix = ''
+project.version = scmVersion.version
 
 android {
     compileSdkVersion 25

@@ -2,10 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'jacoco-android'
-
-group = 'io.one_team.oneteam-rte-kt.toolbar'
-scmVersion.tag.prefix = ''
-project.version = scmVersion.version
+apply plugin: 'android-maven'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -14,6 +11,10 @@ dependencies {
     compile 'com.android.support:support-compat:25.1.1'
     testCompile 'junit:junit:4.12'
 }
+
+group = 'com.github.one_team.oneteam-rte-kt'
+scmVersion.tag.prefix = ''
+project.version = scmVersion.version
 
 android {
     compileSdkVersion 25

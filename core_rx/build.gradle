@@ -1,15 +1,16 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-
-group = 'io.one_team.oneteam-rte-kt.core-rx'
-scmVersion.tag.prefix = ''
-project.version = scmVersion.version
+apply plugin: 'android-maven'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':core')
     compile 'io.reactivex:rxkotlin:0.60.0'
 }
+
+group = 'com.github.one_team.oneteam-rte-kt'
+scmVersion.tag.prefix = ''
+project.version = scmVersion.version
 
 android {
     compileSdkVersion 25

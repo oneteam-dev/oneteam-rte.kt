@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'android-maven'
 
 android {
     compileSdkVersion 25
@@ -25,6 +26,10 @@ android {
         test.java.srcDirs += 'src/test/kotlin'
     }
 }
+
+group = 'com.github.one_team.oneteam-rte-kt'
+scmVersion.tag.prefix = ''
+project.version = scmVersion.version
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')

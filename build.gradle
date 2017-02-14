@@ -19,6 +19,10 @@ plugins { id 'pl.allegro.tech.build.axion-release' version '1.3.4' }
 apply plugin: 'kotlin'
 apply plugin: 'android-maven'
 
+group = 'com.github.one_team.oneteam-rte-kt'
+scmVersion.tag.prefix = ''
+project.version = scmVersion.version
+
 allprojects {
     repositories {
         jcenter()
@@ -34,9 +38,4 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testCompile 'junit:junit:4.12'
-}
-
-sourceSets {
-    main.java.srcDirs += 'src/main/kotlin'
-    test.java.srcDirs += 'src/test/kotlin'
 }
