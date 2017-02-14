@@ -58,16 +58,19 @@ export default class Editor extends Component {
     toggleLink(url = null) {
         if(this.editor) {
           this.editor.toggleLink(url);
+          AndroidInterface.didChangeInlineStyles(this.getCurrentInlineStyles().join(','));
         }
     }
     toggleBlockType(type) {
         if(this.editor) {
             this.editor.toggleBlockType(type);
+            AndroidInterface.didChangeBlockType(this.getCurrentBlockType());
         }
     }
     toggleInlineStyle(style) {
         if(this.editor) {
             this.editor.toggleInlineStyle(style);
+            AndroidInterface.didChangeInlineStyles(this.getCurrentInlineStyles().join(','));
         }
     }
     getCurrentInlineStyles() {

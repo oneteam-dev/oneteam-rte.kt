@@ -7,4 +7,14 @@ sealed class InlineStyle {
     object Italic : InlineStyle() { override val stringValue =  "ITALIC" }
     object Strikethrough : InlineStyle() { override val stringValue = "STRIKETHROUGH" }
     object Code : InlineStyle() { override val stringValue = "CODE" }
+
+    companion object {
+        fun from(value: String): InlineStyle? = when (value) {
+            Bold.stringValue -> Bold
+            Italic.stringValue -> Italic
+            Strikethrough.stringValue -> Strikethrough
+            Code.stringValue -> Code
+            else -> null
+        }
+    }
 }

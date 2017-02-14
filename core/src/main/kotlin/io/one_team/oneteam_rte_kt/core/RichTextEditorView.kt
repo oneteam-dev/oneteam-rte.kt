@@ -29,7 +29,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
             onInlineStylesChanged?.invoke(value)
         }
 
-    var blockStyle = BlockStyle.Unstyled
+    var blockStyle: BlockStyle = BlockStyle.Unstyled
         set(value) {
             field = value
             onBlockStyleChanged?.invoke(value)
@@ -135,12 +135,22 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
     private inner class JSInterface {
         @JavascriptInterface
         fun didChangeInlineStyles(styles: String?): Unit {
-            Log.d("JSInterface", styles)
+            Handler(context.mainLooper).post {
+                inlineStyles = styles
+                        ?.split(",")
+                        ?.map { InlineStyle.from(it) }
+                        ?.filterNotNull()
+                        ?: listOf()
+            }
         }
 
         @JavascriptInterface
         fun didChangeBlockType(type: String?): Unit {
-            Log.d("JSInterface", type)
+            Handler(context.mainLooper).post {
+                blockStyle = type
+                        ?.let { BlockStyle.from(it) }
+                        ?: BlockStyle.Unstyled
+            }
         }
 
         @JavascriptInterface

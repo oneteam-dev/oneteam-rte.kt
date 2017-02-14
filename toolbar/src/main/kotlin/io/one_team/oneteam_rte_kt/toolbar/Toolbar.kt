@@ -19,17 +19,11 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
     }
 
     fun addOnClickImageButtonListener(listener: () -> Unit) {
-        imageButton.setOnClickListener {
-            listener()
-            imageButton.toggleResourceWithState(imageButton.isPressed, R.drawable.ic_photo_active, R.drawable.ic_photo)
-        }
+        imageButton.setOnClickListener { listener() }
     }
 
     fun addOnClickInsertLinkButtonListener(listener: () -> Unit) {
-        linkButton.setOnClickListener {
-            listener()
-            linkButton.toggleResourceWithState(linkButton.isPressed, R.drawable.ic_links_active, R.drawable.ic_links)
-        }
+        linkButton.setOnClickListener { listener() }
     }
 
     override fun onAttachedToWindow() {
@@ -37,28 +31,53 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
 
         headingButton.setOnClickListener {
             editor?.toggleBlockStyle(BlockStyle.Heading1)
-            headingButton.toggleResourceWithState(headingButton.isPressed, R.drawable.ic_h2_active, R.drawable.ic_heading)
         }
 
         boldButton.setOnClickListener {
             editor?.toggleInlineStyle(InlineStyle.Bold)
-            boldButton.toggleResourceWithState(boldButton.isPressed, R.drawable.ic_bold_active, R.drawable.ic_bold)
         }
 
         checkListButton.setOnClickListener {
             editor?.toggleBlockStyle(BlockStyle.CheckableListItem)
-
-            checkListButton.toggleResourceWithState(checkListButton.isPressed, R.drawable.ic_checkbox_active, R.drawable.ic_checkbox)
         }
 
         listButton.setOnClickListener {
             editor?.toggleBlockStyle(BlockStyle.UnorderedListItem)
-            listButton.toggleResourceWithState(listButton.isPressed, R.drawable.ic_list_ul_active, R.drawable.ic_list_ul)
         }
 
         orderedListButton.setOnClickListener {
             editor?.toggleBlockStyle(BlockStyle.OrderedListItem)
-            orderedListButton.toggleResourceWithState(orderedListButton.isPressed, R.drawable.ic_list_ol_active, R.drawable.ic_list_ol)
+        }
+
+        editor?.onInlineStylesChanged = {
+            boldButton.toggleResourceWithState(
+                    it.contains(InlineStyle.Bold),
+                    R.drawable.ic_bold_active,
+                    R.drawable.ic_bold
+            )
+        }
+
+        editor?.onBlockStyleChanged = {
+            headingButton.toggleResourceWithState(
+                    it == BlockStyle.Heading1,
+                    R.drawable.ic_h2_active,
+                    R.drawable.ic_heading
+            )
+            checkListButton.toggleResourceWithState(
+                    it == BlockStyle.CheckableListItem,
+                    R.drawable.ic_checkbox_active,
+                    R.drawable.ic_checkbox
+            )
+            listButton.toggleResourceWithState(
+                    it == BlockStyle.UnorderedListItem,
+                    R.drawable.ic_list_ul_active,
+                    R.drawable.ic_list_ul
+            )
+            orderedListButton.toggleResourceWithState(
+                    it == BlockStyle.OrderedListItem,
+                    R.drawable.ic_list_ol_active,
+                    R.drawable.ic_list_ol
+            )
         }
     }
 
@@ -72,6 +91,8 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
         listButton.setOnClickListener(null)
         orderedListButton.setOnClickListener(null)
         linkButton.setOnClickListener(null)
+        editor?.onInlineStylesChanged = null
+        editor?.onBlockStyleChanged = null
     }
 
     private fun ImageButton.toggleResourceWithState(isActive: Boolean, active: Int, normal: Int) {

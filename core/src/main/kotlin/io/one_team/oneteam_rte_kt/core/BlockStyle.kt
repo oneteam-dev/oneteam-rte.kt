@@ -15,4 +15,22 @@ sealed class BlockStyle {
     object CheckableListItem : BlockStyle() { override val stringValue = "checkable-list-item" }
     object Atomic : BlockStyle() { override val stringValue = "atomic" }
     object CodeBlock: BlockStyle() { override val stringValue = "code-block" }
+
+    companion object {
+        fun from(value: String): BlockStyle? = when (value) {
+            Unstyled.stringValue -> Unstyled
+            Heading1.stringValue -> Heading1
+            Heading2.stringValue -> Heading2
+            Heading3.stringValue -> Heading3
+            Heading4.stringValue -> Heading4
+            Heading5.stringValue -> Heading5
+            Blockquote.stringValue -> Blockquote
+            OrderedListItem.stringValue -> OrderedListItem
+            UnorderedListItem.stringValue -> UnorderedListItem
+            CheckableListItem.stringValue -> CheckableListItem
+            Atomic.stringValue -> Atomic
+            CodeBlock.stringValue -> CodeBlock
+            else -> null
+        }
+    }
 }
