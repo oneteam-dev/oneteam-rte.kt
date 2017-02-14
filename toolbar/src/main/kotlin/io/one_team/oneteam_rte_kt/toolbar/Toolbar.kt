@@ -26,6 +26,14 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
         linkButton.setOnClickListener { listener() }
     }
 
+    fun removeOnClickImageButtonListener() {
+        imageButton.setOnClickListener(null)
+    }
+
+    fun removeOnClickInsertLinkButtonListener() {
+        linkButton.setOnClickListener(null)
+    }
+
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
 
@@ -90,13 +98,11 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
 
-        imageButton.setOnClickListener(null)
         headingButton.setOnClickListener(null)
         boldButton.setOnClickListener(null)
         checkListButton.setOnClickListener(null)
         listButton.setOnClickListener(null)
         orderedListButton.setOnClickListener(null)
-        linkButton.setOnClickListener(null)
         editor?.onInlineStylesChanged = null
         editor?.onBlockStyleChanged = null
     }
