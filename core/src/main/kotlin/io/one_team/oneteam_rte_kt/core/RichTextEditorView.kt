@@ -18,6 +18,10 @@ import java.net.URL
  * @see https://github.com/oneteam-dev/oneteam-rte
  */
 class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(context, attr) {
+    /**
+     * Html content in a editor
+     * This is two-way bound value so that make exactly same as a value in the editor.
+     */
     var content: String
         get() = _content
         set(value) {
@@ -31,12 +35,20 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
             onContentChanged?.invoke(value)
         }
 
+    /**
+     * Inline styles applied to selected line
+     * @see [InlineStyle]
+     */
     var inlineStyles: List<InlineStyle> = listOf()
         set(value) {
             field = value
             onInlineStylesChanged?.invoke(value)
         }
 
+    /**
+     * Block style applied to selected line
+     * @see [BlockStyle]
+     */
     var blockStyle: BlockStyle = BlockStyle.Unstyled
         set(value) {
             field = value
