@@ -30,7 +30,11 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
         super.onAttachedToWindow()
 
         headingButton.setOnClickListener {
-            editor?.toggleBlockStyle(BlockStyle.Heading1)
+            when (editor?.blockStyle) {
+                is BlockStyle.Heading1 -> editor?.toggleBlockStyle(BlockStyle.Heading3)
+                is BlockStyle.Heading3 -> editor?.toggleBlockStyle(BlockStyle.Heading3)
+                else -> editor?.toggleBlockStyle(BlockStyle.Heading1)
+            }
         }
 
         boldButton.setOnClickListener {
@@ -58,11 +62,13 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
         }
 
         editor?.onBlockStyleChanged = {
-            headingButton.toggleResourceWithState(
-                    it == BlockStyle.Heading1,
-                    R.drawable.ic_h2_active,
-                    R.drawable.ic_heading
-            )
+            val resource = when (editor?.blockStyle) {
+                is BlockStyle.Heading1 -> R.drawable.ic_h2_active
+                is BlockStyle.Heading3 -> R.drawable.ic_h3_active
+                else -> R.drawable.ic_heading
+            }
+            headingButton.setImageResource(resource)
+
             checkListButton.toggleResourceWithState(
                     it == BlockStyle.CheckableListItem,
                     R.drawable.ic_checkbox_active,
