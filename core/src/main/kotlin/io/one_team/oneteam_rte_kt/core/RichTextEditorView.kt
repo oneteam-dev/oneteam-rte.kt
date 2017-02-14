@@ -24,7 +24,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
         }
 
     var inlineStyles: List<InlineStyle> = listOf()
-    var blockStyles: List<BlockStyle> = listOf()
+    var blockStyle = BlockStyle.Unstyled
 
     init {
         LayoutInflater.from(context).inflate(R.layout.rich_text_editor_view, this)
@@ -122,13 +122,13 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
 
     private inner class JSInterface {
         @JavascriptInterface
-        fun didChangeInlineStyles(styles: List<String>?): Unit {
-            Log.d("JSInterface", styles.toString())
+        fun didChangeInlineStyles(styles: String?): Unit {
+            Log.d("JSInterface", styles)
         }
 
         @JavascriptInterface
-        fun didChangeBlockStyles(styles: List<String>?): Unit {
-            Log.d("JSInterface", styles.toString())
+        fun didChangeBlockType(type: String?): Unit {
+            Log.d("JSInterface", type)
         }
 
         @JavascriptInterface
