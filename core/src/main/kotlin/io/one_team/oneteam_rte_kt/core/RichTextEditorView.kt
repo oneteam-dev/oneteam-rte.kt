@@ -17,10 +17,11 @@ import java.net.URL
  * A View wrapping oneteam-rtd javascript library.
  */
 class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(context, attr) {
-    var html = ""
+    var content = ""
         set(value) {
             field = value
-            webView.setHTML(html)
+            webView.setHTML(value)
+            onContentChanged?.invoke(value)
         }
 
     var inlineStyles: List<InlineStyle> = listOf()
@@ -35,6 +36,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
             onBlockStyleChanged?.invoke(value)
         }
 
+    var onContentChanged: ((String) -> Unit)? = null
     var onInlineStylesChanged: ((List<InlineStyle>) -> Unit)? = null
     var onBlockStyleChanged: ((BlockStyle) -> Unit)? = null
 
@@ -96,7 +98,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
     /**
      * Insert iframe code
      *
-     * @param src iframe code you want to insert in html
+     * @param src iframe code you want to insert into content
      */
     fun insertIFrame(src: String) {
         webView.insertIFrame(src.replace("\"", "\\\""))

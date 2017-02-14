@@ -1,1 +1,1 @@
-include ':core', ':sample', ':toolbar'
+include ':core', ':sample', ':toolbar', ':core_rx'
