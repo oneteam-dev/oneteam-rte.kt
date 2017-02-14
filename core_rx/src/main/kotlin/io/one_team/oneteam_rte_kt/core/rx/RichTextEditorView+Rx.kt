@@ -1,4 +1,4 @@
-package io.one_team.oneteam_rte_kt.core
+package io.one_team.oneteam_rte_kt.core.rx
 
 import rx.Observable
 
