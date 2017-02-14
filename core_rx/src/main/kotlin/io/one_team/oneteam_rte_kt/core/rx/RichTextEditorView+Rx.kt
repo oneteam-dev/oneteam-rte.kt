@@ -1,5 +1,8 @@
 package io.one_team.oneteam_rte_kt.core.rx
 
+import io.one_team.oneteam_rte_kt.core.BlockStyle
+import io.one_team.oneteam_rte_kt.core.InlineStyle
+import io.one_team.oneteam_rte_kt.core.RichTextEditorView
 import rx.Observable
 
 fun RichTextEditorView.contentChanges(): Observable<String> =
