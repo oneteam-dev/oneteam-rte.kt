@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#a1bdea"
-    tools:context="io.one_team.sample.MainActivity">
+    tools:context="io.one_team.oneteam_rte_kt.sample.MainActivity">
     <io.one_team.oneteam_rte_kt.toolbar.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

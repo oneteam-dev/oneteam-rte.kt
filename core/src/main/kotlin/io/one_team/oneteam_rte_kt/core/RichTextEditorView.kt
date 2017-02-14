@@ -23,6 +23,9 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
             webView.setHTML(html)
         }
 
+    var inlineStyles: List<InlineStyle> = listOf()
+    var blockStyles: List<BlockStyle> = listOf()
+
     init {
         LayoutInflater.from(context).inflate(R.layout.rich_text_editor_view, this)
     }
@@ -118,8 +121,19 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
     }
 
     private inner class JSInterface {
-        @JavascriptInterface fun didChangeEditorState(state: String): Unit {
-            Log.d("JSInterface", state)
+        @JavascriptInterface
+        fun didChangeInlineStyles(styles: List<String>?): Unit {
+            Log.d("JSInterface", styles.toString())
+        }
+
+        @JavascriptInterface
+        fun didChangeBlockStyles(styles: List<String>?): Unit {
+            Log.d("JSInterface", styles.toString())
+        }
+
+        @JavascriptInterface
+        fun didChangeContent(content: String?): Unit {
+            Log.d("JSInterface", content)
         }
     }
 }

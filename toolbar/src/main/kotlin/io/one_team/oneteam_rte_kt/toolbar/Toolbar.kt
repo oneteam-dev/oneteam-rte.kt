@@ -1,8 +1,10 @@
 package io.one_team.oneteam_rte_kt.toolbar
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import io.one_team.oneteam_rte_kt.core.BlockStyle
 import io.one_team.oneteam_rte_kt.core.InlineStyle
@@ -17,62 +19,63 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
     }
 
     fun addOnClickImageButtonListener(listener: () -> Unit) {
-        imageButton.setOnClickListener { listener() }
-    }
-
-    fun addOnClickFileButtonListener(listener: () -> Unit) {
-        fileButton.setOnClickListener { listener() }
+        imageButton.setOnClickListener {
+            listener()
+            imageButton.toggleResourceWithState(imageButton.isPressed, R.drawable.ic_photo_active, R.drawable.ic_photo)
+        }
     }
 
     fun addOnClickInsertLinkButtonListener(listener: () -> Unit) {
-        insertLinkButton.setOnClickListener { listener() }
-    }
-
-    fun addIFrameButtonListener(listener: () -> Unit) {
-        iframeButton.setOnClickListener { listener() }
+        linkButton.setOnClickListener {
+            listener()
+            linkButton.toggleResourceWithState(linkButton.isPressed, R.drawable.ic_links_active, R.drawable.ic_links)
+        }
     }
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
 
-        h1Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading1) }
-        h2Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading2) }
-        h3Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading3) }
-        h4Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading4) }
-        h5Button.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Heading5) }
-        boldButton.setOnClickListener { editor?.toggleInlineStyle(InlineStyle.Bold) }
-        italicButton.setOnClickListener { editor?.toggleInlineStyle(InlineStyle.Italic) }
-        codeButton.setOnClickListener { editor?.toggleInlineStyle(InlineStyle.Code) }
-        quoteButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.Blockquote) }
-        strikeThroughButton.setOnClickListener { editor?.toggleInlineStyle(InlineStyle.Strikethrough) }
-        checkListButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.CheckableListItem) }
-        listButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.UnorderedListItem) }
-        orderedListButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.OrderedListItem) }
-        removeLinkButton.setOnClickListener { editor?.removeLink() }
-        codeBlockButton.setOnClickListener { editor?.toggleBlockStyle(BlockStyle.CodeBlock) }
+        headingButton.setOnClickListener {
+            editor?.toggleBlockStyle(BlockStyle.Heading1)
+            headingButton.toggleResourceWithState(headingButton.isPressed, R.drawable.ic_h2_active, R.drawable.ic_heading)
+        }
+
+        boldButton.setOnClickListener {
+            editor?.toggleInlineStyle(InlineStyle.Bold)
+            boldButton.toggleResourceWithState(boldButton.isPressed, R.drawable.ic_bold_active, R.drawable.ic_bold)
+        }
+
+        checkListButton.setOnClickListener {
+            editor?.toggleBlockStyle(BlockStyle.CheckableListItem)
+
+            checkListButton.toggleResourceWithState(checkListButton.isPressed, R.drawable.ic_checkbox_active, R.drawable.ic_checkbox)
+        }
+
+        listButton.setOnClickListener {
+            editor?.toggleBlockStyle(BlockStyle.UnorderedListItem)
+            listButton.toggleResourceWithState(listButton.isPressed, R.drawable.ic_list_ul_active, R.drawable.ic_list_ul)
+        }
+
+        orderedListButton.setOnClickListener {
+            editor?.toggleBlockStyle(BlockStyle.OrderedListItem)
+            orderedListButton.toggleResourceWithState(orderedListButton.isPressed, R.drawable.ic_list_ol_active, R.drawable.ic_list_ol)
+        }
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
 
         imageButton.setOnClickListener(null)
-        fileButton.setOnClickListener(null)
-        h1Button.setOnClickListener(null)
-        h2Button.setOnClickListener(null)
-        h3Button.setOnClickListener(null)
-        h4Button.setOnClickListener(null)
-        h5Button.setOnClickListener(null)
+        headingButton.setOnClickListener(null)
         boldButton.setOnClickListener(null)
-        italicButton.setOnClickListener(null)
-        codeButton.setOnClickListener(null)
-        quoteButton.setOnClickListener(null)
-        strikeThroughButton.setOnClickListener(null)
         checkListButton.setOnClickListener(null)
         listButton.setOnClickListener(null)
         orderedListButton.setOnClickListener(null)
-        insertLinkButton.setOnClickListener(null)
-        removeLinkButton.setOnClickListener(null)
-        iframeButton.setOnClickListener(null)
-        codeBlockButton.setOnClickListener(null)
+        linkButton.setOnClickListener(null)
+    }
+
+    private fun ImageButton.toggleResourceWithState(isActive: Boolean, active: Int, normal: Int) {
+        val resource = if (isActive) active else normal
+        setImageResource(resource)
     }
 }

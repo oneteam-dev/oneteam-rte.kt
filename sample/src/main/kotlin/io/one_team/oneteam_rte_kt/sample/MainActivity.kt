@@ -16,20 +16,12 @@ class MainActivity : AppCompatActivity() {
         toolbar.editor = editor
 
         // These are just examples. You should make users to choose files or images or link
-        toolbar.addOnClickFileButtonListener {
-            editor?.insertFile("example", URL("http://ipv4.download.thinkbroadband.com/5MB.zip"))
-        }
-
         toolbar.addOnClickImageButtonListener {
             editor?.insertImage("example", URL("http://placehold.it/350x150"))
         }
 
         toolbar.addOnClickInsertLinkButtonListener {
             editor?.insertLink(URL("https://example.com/content"))
-        }
-
-        toolbar.addIFrameButtonListener {
-            editor?.insertIFrame("""<iframe width="560" height="315" src="https://www.youtube.com/embed/0E00Zuayv9Q" frameborder="0" allowfullscreen></iframe>""")
         }
     }
 }

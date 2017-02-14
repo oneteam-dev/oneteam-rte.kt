@@ -94,12 +94,9 @@ export default class Editor extends Component {
         }
     }
     triggerOnChange() {
-        const data = {
-            inlineStyles: this.getCurrentInlineStyles(),
-            blockType: this.getCurrentBlockType(),
-            html: this.editor.html
-        };
-        AndroidInterface.didChangeEditorState(data);
+        AndroidInterface.didChangeInlineStyles(this.getCurrentInlineStyles());
+        AndroidInterface.didChangeBlockStyles(this.getCurrentBlockType());
+        AndroidInterface.didChangeContent(this.editor.html);
     }
     render() {
         return (
