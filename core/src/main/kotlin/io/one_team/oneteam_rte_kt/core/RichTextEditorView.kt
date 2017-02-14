@@ -14,13 +14,20 @@ import kotlinx.android.synthetic.main.rich_text_editor_view.view.*
 import java.net.URL
 
 /**
- * A View wrapping oneteam-rtd javascript library.
+ * A View wrapping oneteam-rte javascript library.
+ * @see https://github.com/oneteam-dev/oneteam-rte
  */
 class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(context, attr) {
-    var content = ""
+    var content: String
+        get() = _content
+        set(value) {
+            _content = value
+            webView.setHTML(value)
+        }
+
+    private var _content = ""
         set(value) {
             field = value
-            webView.setHTML(value)
             onContentChanged?.invoke(value)
         }
 
@@ -157,7 +164,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
 
         @JavascriptInterface
         fun didChangeContent(content: String?): Unit {
-            Log.d("JSInterface", content)
+            _content = content ?: ""
         }
     }
 }
