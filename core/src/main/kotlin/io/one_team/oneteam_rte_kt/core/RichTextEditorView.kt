@@ -24,7 +24,19 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
         }
 
     var inlineStyles: List<InlineStyle> = listOf()
+        set(value) {
+            field = value
+            onInlineStylesChanged?.invoke(value)
+        }
+
     var blockStyle = BlockStyle.Unstyled
+        set(value) {
+            field = value
+            onBlockStyleChanged?.invoke(value)
+        }
+
+    var onInlineStylesChanged: ((List<InlineStyle>) -> Unit)? = null
+    var onBlockStyleChanged: ((BlockStyle) -> Unit)? = null
 
     init {
         LayoutInflater.from(context).inflate(R.layout.rich_text_editor_view, this)
