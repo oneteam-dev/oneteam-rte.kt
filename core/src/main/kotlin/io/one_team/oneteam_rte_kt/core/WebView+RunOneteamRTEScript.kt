@@ -5,7 +5,7 @@ import android.webkit.WebView
 fun WebView.blur() = runScript("window.editor.blur()")
 fun WebView.focus() = runScript("window.editor.focus()")
 fun WebView.setPlaceholder(value: String) = runScript("""window.editor.placeholder = "$value" """)
-fun WebView.setHTML(html: String) = runScript("""window.editor.setHTML("$html")""")
+fun WebView.setHTML(html: String) = runScript("""window.editor.setHTML("${html.replace("\"", "\\\"")}")""")
 fun WebView.toggleBlockType(type: String) = runScript("""window.editor.toggleBlockType("$type")""")
 fun WebView.toggleInlineStyle(type: String) = runScript("""window.editor.toggleInlineStyle("$type")""")
 fun WebView.insertLink(url: String) = runScript("""window.editor.toggleLink("$url")""")
