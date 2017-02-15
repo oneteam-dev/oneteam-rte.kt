@@ -53,6 +53,7 @@ dependencies {
 ```kotlin
 class MainActivity {
     override fun onAttachedToWindow() {
+        toolbar.editor = editor
         toolbar.addOnClickImageButtonListener {
             // Prompt which image to use and call RichtextEditorView::insertImage
         }
