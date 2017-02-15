@@ -15,6 +15,9 @@ export default class Editor extends Component {
         this.editor = null;
         this.state = { editorState: {}, paddingTop: 0 };
     }
+    componentDidMount() {
+        AndroidInterface.didMountComponent();
+    }
     set paddingTop(paddingTop) {
         this.setState({ paddingTop });
     }

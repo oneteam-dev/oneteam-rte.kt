@@ -155,6 +155,11 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
 
     private inner class JSInterface {
         @JavascriptInterface
+        fun didMountComponent(): Unit {
+            Handler(context.mainLooper).post { webView.setHTML(_content) }
+        }
+
+        @JavascriptInterface
         fun didChangeInlineStyles(styles: String?): Unit {
             Handler(context.mainLooper).post {
                 inlineStyles = styles
@@ -176,7 +181,9 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
 
         @JavascriptInterface
         fun didChangeContent(content: String?): Unit {
-            _content = content ?: ""
+            Handler(context.mainLooper).post {
+                _content = content ?: ""
+            }
         }
     }
 }
