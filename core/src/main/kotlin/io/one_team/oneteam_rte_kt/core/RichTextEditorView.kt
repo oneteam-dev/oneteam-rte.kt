@@ -1,14 +1,12 @@
 package io.one_team.oneteam_rte_kt.core
 
 import android.content.Context
+import android.os.Build
 import android.os.Handler
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
-import android.webkit.JavascriptInterface
-import android.webkit.WebChromeClient
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.rich_text_editor_view.view.*
 import java.net.URL
@@ -144,8 +142,22 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
         webView.insertImage(json)
     }
 
+    /**
+     * Set cookie value to webView
+     * @param host host to set cookie
+     * @param cookie key=value string
+     */
+    fun setCookie(host: String, cookie: String) {
+        val cookieManager = CookieManager.getInstance()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            cookieManager.setAcceptThirdPartyCookies(webView, true)
+        } else {
+            cookieManager.setAcceptCookie(true)
+        }
+        cookieManager.setCookie(host, cookie)
+    }
+
     private fun setupWebView() {
-        WebView.setWebContentsDebuggingEnabled(true)
         webView.loadUrl("file:///android_asset/index.html")
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(JSInterface(), "AndroidInterface")
