@@ -8,7 +8,13 @@ const plugins = [
   new webpack.LoaderOptionsPlugin({
     test: /\.styl$/,
     stylus: { default: { use: [bootstrap()] } }
-  })
+  }),
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify('production')
+    }
+  }),
+  new webpack.optimize.UglifyJsPlugin()
 ];
 
 export default {
