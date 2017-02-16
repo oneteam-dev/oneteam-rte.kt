@@ -103,13 +103,16 @@ export default class Editor extends Component {
         AndroidInterface.didChangeInlineStyles(this.getCurrentInlineStyles().join(','));
         AndroidInterface.didChangeBlockType(this.getCurrentBlockType());
         AndroidInterface.didChangeContent(this.editor.html);
+        setTimeout(() => { this.editor.focus(); }, 0);
     }
     render() {
         return (
             <div style={{ paddingTop: this.state.paddingTop }}>
               <RichTextEditor
                   onChange={() => { this.triggerOnChange() }}
+                  placeholder=''
                   atomicBlockRenderMap={{["FILE_PLACEHOLDER"]: FileLink}}
+                  onKeyDown={this.handleKeyDown}
                   ref={(c) => this.setEditor(c)} />
             </div>
         )

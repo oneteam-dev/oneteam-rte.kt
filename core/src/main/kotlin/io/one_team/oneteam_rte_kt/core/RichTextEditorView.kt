@@ -6,10 +6,12 @@ import android.os.Handler
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.inputmethod.*
 import android.webkit.*
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.rich_text_editor_view.view.*
 import java.net.URL
+
 
 /**
  * A View wrapping oneteam-rte javascript library.
@@ -63,18 +65,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-
         setupWebView()
-
-        setOnFocusChangeListener { view, hasFocus ->
-            if (hasFocus) webView.focus() else webView.blur()
-        }
-    }
-
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-
-        onFocusChangeListener = null
     }
 
     /**
@@ -158,6 +149,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
     }
 
     private fun setupWebView() {
+        WebView.setWebContentsDebuggingEnabled(true)
         webView.loadUrl("file:///android_asset/index.html")
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(JSInterface(), "AndroidInterface")
@@ -196,6 +188,23 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
             Handler(context.mainLooper).post {
                 _content = content ?: ""
             }
+        }
+    }
+}
+
+class InputWebView(context: Context, attr: AttributeSet?) : WebView(context, attr) {
+    override fun onCreateInputConnection(outAttrs: EditorInfo): InputConnection? {
+        val connection = super.onCreateInputConnection(outAttrs)
+        return connection?.let { EditTextInputConnection(it, true) }
+    }
+
+    inner class EditTextInputConnection(
+            target: InputConnection?, mutable: Boolean
+    ) : InputConnectionWrapper(target, mutable) {
+        override fun closeConnection() {
+            val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(this@InputWebView, 0)
+            super.closeConnection()
         }
     }
 }

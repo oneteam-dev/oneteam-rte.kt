@@ -9,7 +9,7 @@
         android:layout_weight="1"
         android:background="#ffffff"
         android:padding="16dp">
-        <WebView
+        <io.one_team.oneteam_rte_kt.core.InputWebView
             android:id="@+id/webView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
