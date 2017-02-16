@@ -1,0 +1,20 @@
+machine:
+  timezone: Asia/Tokyo
+  java:
+    version: oraclejdk8
+  node:
+    version: 6.9.4
+  environment:
+    GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx1G -XX:+HeapDumpOnOutOfMemoryError"'
+
+dependencies:
+  pre:
+    - mkdir /usr/local/android-sdk-linux/licenses/
+    - cp licenses/* /usr/local/android-sdk-linux/licenses/
+  cache_directories:
+    - ~/.android
+    - /usr/local/android-sdk-linux/platforms
+    - /usr/local/android-sdk-linux/build-tools
+    - /usr/local/android-sdk-linux/extras
+    - build
+    - app/build

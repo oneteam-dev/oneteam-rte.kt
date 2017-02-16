@@ -5,7 +5,6 @@
   "description": "oneteam-rte.kt internal asset",
   "scripts": {
     "lint": "eslint src",
-    "test": "mocha --compilers js:babel-register test/**/*.js",
     "clean": "if [ -d dist ]; then rm -rf dist; fi",
     "build": "npm run clean && npm run jade && webpack --optimize-minimize",
     "build:watch": "npm run clean && npm run jade && webpack --progress --colors --watch",
