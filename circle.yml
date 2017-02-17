@@ -18,3 +18,8 @@ dependencies:
     - /usr/local/android-sdk-linux/extras
     - build
     - app/build
+test:
+  post:
+    - ./gradlew jacocoTestReport
+    - bash <(curl -s https://codecov.io/bash)
+
