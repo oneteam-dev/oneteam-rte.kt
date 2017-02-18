@@ -149,7 +149,6 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
     }
 
     private fun setupWebView() {
-        WebView.setWebContentsDebuggingEnabled(true)
         webView.loadUrl("file:///android_asset/index.html")
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(JSInterface(), "AndroidInterface")
