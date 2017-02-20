@@ -255,6 +255,7 @@ a
   &__checkbox
     position: absolute
     input
+      -webkit-appearance: none
       width: 20px
       height: 20px
       border: 1px solid #d5cdcd
@@ -266,14 +267,15 @@ a
         border-color: #009cd6
         background-color: rgba(0, 174, 239, 0.8)
         &::before
+          position: absolute
           content: ''
           width: 6px
           height: 10px
           border-bottom: 2px solid #fff
           border-right: 2px solid #fff
           transform: rotate(45deg)
-          top: 3px
-          left: 6px
+          top: 5px
+          left: 9px
   &__text
     padding-left: 28px
   &.is-checked
