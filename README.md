@@ -31,20 +31,20 @@ dependencies {
 
 ### Include RichTextEditorView
 
-```diff
+```xml
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/activity_main"
     android:layout_width="match_parent" android:layout_height="match_parent" />
-+    <io.one_team.oneteam_rte_kt.toolbar.Toolbar
-+        android:id="@+id/toolbar"
-+        android:layout_width="match_parent"
-+        android:layout_height="wrap_content"
-+        android:layout_alignParentTop="true" />
-+    <io.one_team.oneteam_rte_kt.core.RichTextEditorView
-+        android:id="@+id/editor"
-+        android:layout_width="match_parent"
-+        android:layout_height="match_parent"
-+        android:layout_below="@id/toolbar"/>
+    <io.one_team.oneteam_rte_kt.toolbar.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+    <io.one_team.oneteam_rte_kt.core.RichTextEditorView
+        android:id="@+id/editor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"/>
 </RelativeLayout>
 ```
 
@@ -76,7 +76,7 @@ please see
 To change `js` directory, run command
 
 ```
-npm install && npm run build:watch
+npm install && npm run build
 ```
 
 And necessary assets will be generated in `core/main/assets` directory.

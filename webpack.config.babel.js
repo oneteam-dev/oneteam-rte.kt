@@ -10,9 +10,9 @@ const plugins = [
     stylus: { default: { use: [bootstrap()] } }
   }),
   new webpack.DefinePlugin({
-//    'process.env': {
-//      NODE_ENV: JSON.stringify('production')
-//    }
+    'process.env': {
+      NODE_ENV: JSON.stringify('production')
+    }
   }),
   new webpack.optimize.UglifyJsPlugin()
 ];
@@ -22,7 +22,7 @@ export default {
   entry,
   cache: true,
   output: {
-    path: path.resolve(__dirname, 'core/src/main/assets'),
+    path: path.resolve(__dirname, 'js/'),
     filename: 'bundle.js'
   },
   resolve: {

@@ -7,3 +7,4 @@
 /build
 /captures
 .externalNativeBuild
+js/bundle.js

@@ -6,8 +6,7 @@
   "scripts": {
     "lint": "eslint src",
     "clean": "if [ -d dist ]; then rm -rf dist; fi",
-    "build": "npm run clean && npm run jade && webpack --optimize-minimize",
-    "build:watch": "npm run clean && npm run jade && webpack --progress --colors --watch",
+    "build": "npm run clean && webpack --optimize-minimize && npm run jade",
     "jade": "jade -o core/src/main/assets js/index.jade"
   },
   "author": "Oneteam Inc.",
