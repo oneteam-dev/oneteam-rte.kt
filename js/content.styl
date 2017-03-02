@@ -247,9 +247,11 @@ a
     background rgba(219, 107, 107, 0.3)
     text-decoration line-through
 
+.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listLTR
+  margin-left: 0
+
 .checkable-list-item
   list-style: none
-  transform: translateX(-1.5em)
 .checkable-list-item-block
   position: relative
   &__checkbox
@@ -274,6 +276,7 @@ a
           border-bottom: 2px solid #fff
           border-right: 2px solid #fff
           transform: rotate(45deg)
+          -webkit-transform: rotate(45deg)
           top: 5px
           left: 9px
   &__text
