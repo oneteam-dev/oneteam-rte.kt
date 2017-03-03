@@ -30,9 +30,10 @@ body
       &.is-show
         display: inline-block
   .DraftEditor-root
-    height: 100%
+    height: auto !important;
+    height: 100%;
+    min-height: 100%;
     max-height: none
-    min-height: 90vh
     overflow: auto
     position: relative
     z-index: 1
@@ -47,6 +48,7 @@ body
         color: #00aeef
         text-decoration: none
   .public-DraftEditor-content
-    height: 100%
+    height: auto !important;
+    height: 100%;
+    min-height: 100%;
     max-height: none
-    min-height: 90vh
