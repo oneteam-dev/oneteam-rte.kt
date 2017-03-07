@@ -6,7 +6,10 @@ import android.os.Handler
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import android.view.inputmethod.*
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputConnection
+import android.view.inputmethod.InputConnectionWrapper
+import android.view.inputmethod.InputMethodManager
 import android.webkit.*
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.rich_text_editor_view.view.*
@@ -17,6 +20,18 @@ import java.net.URL
  * @see https://github.com/oneteam-dev/oneteam-rte
  */
 class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(context, attr) {
+    companion object {
+        var html: String? = null
+
+        fun getHtml(context: Context): String = when (html) {
+            null -> {
+                html = try { context.assets.open("index.html").bufferedReader().use { it.readText() } } catch(e: Exception) { "" }
+                html!!
+            }
+            else -> html!!
+        }
+    }
+
     /**
      * Html content in a editor
      * This is two-way bound value so that make exactly same as a value in the editor.
@@ -148,7 +163,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
     }
 
     private fun setupWebView() {
-        webView.loadUrl("file:///android_asset/index.html")
+        webView.loadDataWithBaseURL(null, getHtml(context), "text/html", "UTF-8", null)
         webView.settings.javaScriptEnabled = true
         webView.settings.cacheMode = WebSettings.LOAD_NO_CACHE
         webView.addJavascriptInterface(JSInterface(), "AndroidInterface")
