@@ -4,14 +4,13 @@ import android.content.Context
 import android.os.Build
 import android.os.Handler
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.inputmethod.*
 import android.webkit.*
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.rich_text_editor_view.view.*
 import java.net.URL
-
 
 /**
  * A View wrapping oneteam-rte javascript library.
@@ -151,9 +150,16 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
     private fun setupWebView() {
         webView.loadUrl("file:///android_asset/index.html")
         webView.settings.javaScriptEnabled = true
+        webView.settings.cacheMode = WebSettings.LOAD_NO_CACHE
         webView.addJavascriptInterface(JSInterface(), "AndroidInterface")
         webView.setWebViewClient(WebViewClient())
         webView.setWebChromeClient(WebChromeClient())
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            webView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
+        } else {
+            webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+        }
     }
 
     private inner class JSInterface {
