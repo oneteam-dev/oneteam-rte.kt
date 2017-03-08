@@ -21,14 +21,13 @@ import java.net.URL
  */
 class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(context, attr) {
     companion object {
-        var html: String? = null
+        @Volatile var html: String? = null
 
-        fun getHtml(context: Context): String = when (html) {
-            null -> {
-                html = try { context.assets.open("index.html").bufferedReader().use { it.readText() } } catch(e: Exception) { "" }
-                html!!
+        fun getHtml(context: Context): String {
+            if (html == null) {
+                html = context.assets.open("index.html").bufferedReader().use { it.readText() }
             }
-            else -> html!!
+            return html!!
         }
     }
 
