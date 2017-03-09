@@ -179,7 +179,11 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
     private inner class JSInterface {
         @JavascriptInterface
         fun didMountComponent(): Unit {
-            Handler(context.mainLooper).post { webView.setHTML(_content) }
+            Handler(context.mainLooper).post {
+                webView.setHTML(_content)
+                webView.visibility = View.VISIBLE
+                progressView.visibility = View.GONE
+            }
         }
 
         @JavascriptInterface
