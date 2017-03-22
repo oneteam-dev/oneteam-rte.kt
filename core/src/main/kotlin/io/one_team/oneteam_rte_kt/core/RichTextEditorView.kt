@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Handler
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
@@ -159,6 +160,11 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
             cookieManager.setAcceptCookie(true)
         }
         cookieManager.setCookie(host, cookie)
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        webView.requestFocus()
+        return super.onTouchEvent(event)
     }
 
     private fun setupWebView() {
