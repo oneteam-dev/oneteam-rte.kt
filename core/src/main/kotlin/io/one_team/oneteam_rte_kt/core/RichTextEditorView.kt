@@ -21,17 +21,6 @@ import java.net.URL
  * @see https://github.com/oneteam-dev/oneteam-rte
  */
 class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(context, attr) {
-    companion object {
-        @Volatile var html: String? = null
-
-        fun getHtml(context: Context): String {
-            if (html == null) {
-                html = context.assets.open("index.html").bufferedReader().use { it.readText() }
-            }
-            return html!!
-        }
-    }
-
     /**
      * Html content in a editor
      * This is two-way bound value so that make exactly same as a value in the editor.
@@ -163,13 +152,15 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        webView.requestFocus()
+        webView.requestFocus(View.FOCUS_DOWN)
         webView.focus()
+        (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+                .showSoftInput(webView, InputMethodManager.SHOW_IMPLICIT)
         return super.onTouchEvent(event)
     }
 
     private fun setupWebView() {
-        webView.loadDataWithBaseURL(null, getHtml(context), "text/html", "UTF-8", null)
+        webView.loadUrl("file:///android_asset/index.html")
         webView.settings.javaScriptEnabled = true
         webView.settings.cacheMode = WebSettings.LOAD_NO_CACHE
         webView.addJavascriptInterface(JSInterface(), "AndroidInterface")
