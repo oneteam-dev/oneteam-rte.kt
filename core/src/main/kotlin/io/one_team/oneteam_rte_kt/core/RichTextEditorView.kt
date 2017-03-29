@@ -164,6 +164,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         webView.requestFocus()
+        webView.focus()
         return super.onTouchEvent(event)
     }
 
