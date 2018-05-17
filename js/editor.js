@@ -109,6 +109,7 @@ export default class Editor extends Component {
         return (
             <div style={{ paddingTop: this.state.paddingTop }}>
               <RichTextEditor
+                  rawMentions={[]} // tmp
                   onChange={() => { this.triggerOnChange() }}
                   placeholder=''
                   atomicBlockRenderMap={{["FILE_PLACEHOLDER"]: FileLink}}
