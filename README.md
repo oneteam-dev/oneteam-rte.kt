@@ -76,7 +76,7 @@ please see
 To change `js` directory, run command
 
 ```
-npm install && npm run build
+brew install yarn && yarn && npm run build
 ```
 
 And necessary assets will be generated in `core/main/assets` directory.

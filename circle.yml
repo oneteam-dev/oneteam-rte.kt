@@ -3,7 +3,7 @@ machine:
   java:
     version: oraclejdk8
   node:
-    version: 6.9.4
+    version: 8.11.2
   environment:
     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx1G -XX:+HeapDumpOnOutOfMemoryError"'
 
@@ -22,4 +22,3 @@ test:
   post:
     - ./gradlew jacocoTestReport
     - bash <(curl -s https://codecov.io/bash)
-

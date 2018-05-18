@@ -8,3 +8,4 @@
 /captures
 .externalNativeBuild
 js/bundle.js
+node_modules
