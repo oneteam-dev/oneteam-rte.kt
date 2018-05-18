@@ -13,7 +13,7 @@ export default class Editor extends Component {
     constructor(props) {
         super(props);
         this.editor = null;
-        this.state = { editorState: {}, paddingTop: 0 };
+        this.state = { editorState: {}, paddingTop: 0, rawMentions:[] };
     }
     componentDidMount() {
         AndroidInterface.didMountComponent();
@@ -29,6 +29,12 @@ export default class Editor extends Component {
     }
     get placeholder() {
         return this.state.placeholder || RichTextEditor.defaultProps.placeholder;
+    }
+    set rawMentions(rawMentions) {
+        this.setState({ rawMentions });
+    }
+    get rawMentions() {
+        return this.state.rawMentions;
     }
     setEditor(editor) {
         this.editor = editor;
@@ -105,11 +111,23 @@ export default class Editor extends Component {
         AndroidInterface.didChangeContent(this.editor.html);
         setTimeout(() => { this.editor.focus(); }, 0);
     }
+    /* sample data for rawMentions
+    dummyRawMentions() {
+        return [
+                 {
+                   id: 1,
+                   userName: "yamamoto",
+                   name:"yamamoto",
+                   email:"aaa",
+                   avatarURL: "https://github.com/oneteam-dev/react-oneteam/commits/f54df7e2d0dbab1a6fe49f62987e23a19bf01d61/src/Mention/index.js?author=sugarshin"
+                 }
+               ]
+    }*/
     render() {
         return (
             <div style={{ paddingTop: this.state.paddingTop }}>
               <RichTextEditor
-                  rawMentions={[]} // tmp
+                  rawMentions={ this.state.rawMentions }
                   onChange={() => { this.triggerOnChange() }}
                   placeholder=''
                   atomicBlockRenderMap={{["FILE_PLACEHOLDER"]: FileLink}}
