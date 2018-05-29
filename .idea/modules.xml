@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core_rx/core_rx.iml" filepath="$PROJECT_DIR$/core_rx/core_rx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oneteam-rte-kt.iml" filepath="$PROJECT_DIR$/oneteam-rte-kt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/toolbar/toolbar.iml" filepath="$PROJECT_DIR$/toolbar/toolbar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/toolbar_rx/toolbar_rx.iml" filepath="$PROJECT_DIR$/toolbar_rx/toolbar_rx.iml" />
+    </modules>
+  </component>
+</project>
