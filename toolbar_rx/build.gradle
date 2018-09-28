@@ -3,10 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'android-maven'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':toolbar')
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'io.reactivex:rxkotlin:0.60.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':toolbar')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'io.reactivex:rxkotlin:0.60.0'
 }
 
 group = 'com.github.one_team.oneteam-rte-kt'
@@ -14,13 +14,12 @@ scmVersion.tag.prefix = ''
 project.version = scmVersion.version
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    compileSdkVersion 28
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion 19
+        targetSdkVersion 28
         versionCode 1
-        versionName "1.0"
+        versionName "1.3"
     }
     buildTypes {
         release {

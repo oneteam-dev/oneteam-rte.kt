@@ -1,15 +1,16 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.0.6'
+    ext.kotlin_version = '1.2.50'
     repositories {
+        google()
         jcenter()
         mavenCentral()
     }
     dependencies {
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:3.1.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
     }
@@ -25,6 +26,7 @@ project.version = scmVersion.version
 
 allprojects {
     repositories {
+        google()
         jcenter()
         mavenCentral()
         maven { url "http://dl.bintray.com/jetbrains/spek" }
@@ -38,12 +40,13 @@ configurations {
 repositories {
     mavenCentral()
     maven { url "http://dl.bintray.com/kotlin/kotlin-eap-1.1" }
+    google()
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     ktlint 'com.github.shyiko:ktlint:0.4.0'
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }
 
 task ktlintFormat(type: JavaExec) {
