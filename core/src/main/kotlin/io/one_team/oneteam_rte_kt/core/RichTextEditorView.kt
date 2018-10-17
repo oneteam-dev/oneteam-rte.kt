@@ -38,6 +38,18 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
             onContentChanged?.invoke(value)
         }
 
+    var rawMentions: List<Mentionable>
+        get() = _rawMentions
+        set(value) {
+            _rawMentions = value
+            webView.setMentions(value)
+        }
+
+    private var _rawMentions = emptyList<Mentionable>()
+        set(value) {
+            field = value
+        }
+
     /**
      * Inline styles applied to selected line
      * @see [InlineStyle]
@@ -179,6 +191,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
         fun didMountComponent(): Unit {
             Handler(context.mainLooper).post {
                 webView.setHTML(_content)
+                webView.setMentions(_rawMentions)
                 webView.visibility = View.VISIBLE
                 progressView.visibility = View.GONE
             }

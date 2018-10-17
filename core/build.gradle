@@ -5,10 +5,10 @@ apply plugin: 'jacoco-android'
 apply plugin: 'android-maven'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.github.rahatarmanahmed:circularprogressview:2.5.0'
-    testCompile 'junit:junit:4.12'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'com.github.rahatarmanahmed:circularprogressview:2.5.0'
+    testImplementation 'junit:junit:4.12'
 }
 
 group = 'com.github.oneteam-dev.oneteam-rte.kt'
@@ -16,13 +16,12 @@ scmVersion.tag.prefix = ''
 project.version = scmVersion.version
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    compileSdkVersion 28
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion 19
+        targetSdkVersion 28
         versionCode 1
-        versionName "1.0"
+        versionName "1.3"
     }
     buildTypes {
         release {
