@@ -15,11 +15,17 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+        android:layout_alignParentTop="true" />
+    <Button
+        android:id="@+id/contentLogButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:text="SHOW CONTENT LOG"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
     <io.one_team.oneteam_rte_kt.core.RichTextEditorView
         android:id="@+id/editor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"/>
+        android:layout_below="@id/contentLogButton"/>
 </RelativeLayout>
