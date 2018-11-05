@@ -141,10 +141,11 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
     /**
      * Insert a image
      * @param name image name that will be used by alt attribute etc...
-     * @param url image url that will be shown by clicking image
+     * @param originalUrl image url that will be shown by clicking image
+     * @param previewUrl image src url that displaying as preview
      */
-    fun insertImage(name: String, url: URL) {
-        val json = """{"alt": "$name", "title": "$name", "url": "$url"}"""
+    fun insertImage(name: String, originalUrl: URL, previewUrl: URL) {
+        val json = """{"alt": "$name", "title": "$name", "src": "$previewUrl", "data-original-url": "$originalUrl"}"""
         webView.insertImage(json)
     }
 
