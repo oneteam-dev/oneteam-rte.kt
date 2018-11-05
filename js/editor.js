@@ -51,7 +51,7 @@ export default class Editor extends Component {
     }
     insertImage(...args) {
         if(this.editor) {
-            this.editor.insertImageAtomicBlock(...args);
+            this.editor.insertAtomicBlock('IMAGE', 'IMMUTABLE', ...args);
         }
     }
     insertDownloadLink(...args) {
