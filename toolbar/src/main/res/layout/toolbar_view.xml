@@ -47,12 +47,6 @@
                 android:src="@drawable/ic_checkbox"
                 android:background="#ffffff"/>
             <ImageButton
-                android:id="@+id/linkButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_links"
-                android:background="#ffffff"/>
-            <ImageButton
                 android:id="@+id/imageButton"
                 android:layout_width="50dp"
                 android:layout_height="50dp"

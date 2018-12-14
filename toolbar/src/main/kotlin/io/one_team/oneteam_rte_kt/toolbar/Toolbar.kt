@@ -22,18 +22,10 @@ class Toolbar(context: Context, attr: AttributeSet?) : LinearLayout(context, att
         imageButton.setOnClickListener { listener() }
     }
 
-    fun addOnClickInsertLinkButtonListener(listener: () -> Unit) {
-        linkButton.setOnClickListener { listener() }
-    }
-
     fun removeOnClickImageButtonListener() {
         imageButton.setOnClickListener(null)
     }
-
-    fun removeOnClickInsertLinkButtonListener() {
-        linkButton.setOnClickListener(null)
-    }
-
+    
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
 
