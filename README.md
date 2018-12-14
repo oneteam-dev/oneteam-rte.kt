@@ -58,10 +58,6 @@ class MainActivity {
         toolbar.addOnClickImageButtonListener {
             // Prompt which image to use and call RichtextEditorView::insertImage
         }
-
-        toolbar.addOnClickInsertLinkButtonListener {
-            // Prompt what link to use and call RichtextEditorView::insertLink
-        }
     }
 }
 ```
