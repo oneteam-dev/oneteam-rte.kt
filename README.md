@@ -1,7 +1,6 @@
 # oneteam-rte-kt
 [![CircleCI](https://circleci.com/gh/oneteam-dev/oneteam-rte-kt.svg?style=shield)](https://circleci.com/gh/oneteam-dev/oneteam-rte-kt)
 [![](https://jitpack.io/v/oneteam-dev/oneteam-rte-kt.svg)](https://jitpack.io/#oneteam-dev/oneteam-rte-kt)
-[![codecov](https://codecov.io/gh/oneteam-dev/oneteam-rte-kt/branch/master/graph/badge.svg)](https://codecov.io/gh/oneteam-dev/oneteam-rte-kt)
 
 oneteam-rte-kt is a Kotlin / Android wrapper for [oneteam-rte](https://github.com/oneteam-dev/oneteam-rte)
 
