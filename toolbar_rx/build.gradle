@@ -6,7 +6,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':toolbar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'io.reactivex:rxkotlin:0.60.0'
+    implementation 'io.reactivex:rxkotlin:1.0.0'
 }
 
 group = 'com.github.one_team.oneteam-rte-kt'
