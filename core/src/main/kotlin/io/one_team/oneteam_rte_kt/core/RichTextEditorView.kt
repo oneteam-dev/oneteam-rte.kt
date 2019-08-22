@@ -50,6 +50,16 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
             field = value
         }
 
+    var hashtagList: List<String>
+        get() = _hashtagList
+        set(value) {
+            _hashtagList = value
+            webView.setHashTagList(value)
+        }
+    private var _hashtagList = emptyList<String>()
+        set(value) {
+            field = value
+        }
     /**
      * Inline styles applied to selected line
      * @see [InlineStyle]
@@ -193,6 +203,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
             Handler(context.mainLooper).post {
                 webView.setHTML(_content)
                 webView.setMentions(_rawMentions)
+                webView.setHashTagList(_hashtagList)
                 webView.visibility = View.VISIBLE
                 progressView.visibility = View.GONE
             }

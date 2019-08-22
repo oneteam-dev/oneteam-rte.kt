@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
             Mentionable(2, "testuser2", "Test User 2", "testuser2@example.com", "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=retro&f=y")
         )
 
+        editor.hashtagList = listOf("#daily-report", "#thank-you", "#sales", "#promotion")
+
         contentLogButton.setOnClickListener {
             Log.d("DEBUG", editor.content)
         }
