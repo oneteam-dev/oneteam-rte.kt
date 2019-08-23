@@ -129,18 +129,19 @@ export default class Editor extends Component {
                  }
                ]
     }*/
-    /* sample data for hashtagList */
+    /* sample data for hashtagList
     dummyHashtagList() {
         return [
             '#daily-report', '#thank-you', '#sales', '#promotion'
         ]
     }
-    /* */
+    */
     render() {
         return (
             <div style={{ paddingTop: this.state.paddingTop }}>
               <RichTextEditor
                   rawMentions={ this.state.rawMentions }
+                  hashtagList= { this.state.hashtagList }
                   onChange={() => { this.triggerOnChange() }}
                   placeholder=''
                   atomicBlockRenderMap={{["FILE_PLACEHOLDER"]: FileLink}}
