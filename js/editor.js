@@ -13,7 +13,7 @@ export default class Editor extends Component {
     constructor(props) {
         super(props);
         this.editor = null;
-        this.state = { editorState: {}, paddingTop: 0, rawMentions:[] };
+        this.state = { editorState: {}, paddingTop: 0, rawMentions:[], hashtagList: [] };
     }
     componentDidMount() {
         AndroidInterface.didMountComponent();
@@ -35,6 +35,12 @@ export default class Editor extends Component {
     }
     get rawMentions() {
         return this.state.rawMentions;
+    }
+    set hashtagList(hashtagList) {
+        this.setState({ hashtagList });
+    }
+    get hashtagList() {
+        return this.state.hashtagList;
     }
     setEditor(editor) {
         this.editor = editor;
@@ -123,11 +129,19 @@ export default class Editor extends Component {
                  }
                ]
     }*/
+    /* sample data for hashtagList
+    dummyHashtagList() {
+        return [
+            '#daily-report', '#thank-you', '#sales', '#promotion'
+        ]
+    }
+    */
     render() {
         return (
             <div style={{ paddingTop: this.state.paddingTop }}>
               <RichTextEditor
                   rawMentions={ this.state.rawMentions }
+                  hashtagList= { this.state.hashtagList }
                   onChange={() => { this.triggerOnChange() }}
                   placeholder=''
                   atomicBlockRenderMap={{["FILE_PLACEHOLDER"]: FileLink}}
