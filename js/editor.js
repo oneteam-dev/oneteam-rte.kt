@@ -24,10 +24,10 @@ export default class Editor extends Component {
     get paddingTop() {
         return this.state.paddingTop;
     }
-    set placeholder(value) {
-        this.setState({ placeholder: value });
+    set bodyPlaceholder(placeholder) {
+        this.setState({ placeholder });
     }
-    get placeholder() {
+    get bodyPlaceholder() {
         return this.state.placeholder || RichTextEditor.defaultProps.placeholder;
     }
     set rawMentions(rawMentions) {
@@ -111,6 +111,9 @@ export default class Editor extends Component {
           this.editor.html = html;
         }
     }
+    setPlaceholder(_placeholder) {
+        this.bodyPlaceholder = _placeholder;
+    }
     triggerOnChange() {
         AndroidInterface.didChangeInlineStyles(this.getCurrentInlineStyles().join(','));
         AndroidInterface.didChangeBlockType(this.getCurrentBlockType());
@@ -143,7 +146,7 @@ export default class Editor extends Component {
                   rawMentions={ this.state.rawMentions }
                   hashtagList= { this.state.hashtagList }
                   onChange={() => { this.triggerOnChange() }}
-                  placeholder=''
+                  placeholder= { this.state.placeholder }
                   atomicBlockRenderMap={{["FILE_PLACEHOLDER"]: FileLink}}
                   onKeyDown={this.handleKeyDown}
                   ref={(c) => this.setEditor(c)} />
