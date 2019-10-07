@@ -4,7 +4,7 @@ import android.webkit.WebView
 
 fun WebView.blur() = runScript("window.editor.blur()")
 fun WebView.focus() = runScript("window.editor.focus()")
-fun WebView.setPlaceholder(value: String) = runScript("""window.editor.placeholder = "$value" """)
+fun WebView.setBodyPlaceholder(value: String)  = runScript("""window.editor.setPlaceholder("$value");""")
 fun WebView.setHTML(html: String) = runScript("""window.editor.setHTML("${html.replace("\"", "\\\"")}")""")
 fun WebView.setMentions(mentions: List<Mentionable>) = runScript("""window.editor.rawMentions = [${mentions.joinToString { it.toJson() }}]""")
 fun WebView.setHashTagList(hashtagList: List<String>) = runScript("""window.editor.hashtagList = ${hashtagList.map { "\"$it\"" }.joinToString(",", "[", "]")}""")

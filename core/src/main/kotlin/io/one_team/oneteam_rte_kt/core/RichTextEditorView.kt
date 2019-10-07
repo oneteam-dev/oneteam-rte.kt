@@ -38,6 +38,18 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
             onContentChanged?.invoke(value)
         }
 
+    var bodyPlaceholder: String
+        get() = _bodyPlaceholder
+        set(value) {
+            _bodyPlaceholder = value
+            webView.setBodyPlaceholder(value)
+        }
+
+    private var _bodyPlaceholder = ""
+        set(value) {
+            field = value
+        }
+
     var rawMentions: List<Mentionable>
         get() = _rawMentions
         set(value) {
@@ -204,6 +216,7 @@ class RichTextEditorView(context: Context, attr: AttributeSet?) : LinearLayout(c
                 webView.setHTML(_content)
                 webView.setMentions(_rawMentions)
                 webView.setHashTagList(_hashtagList)
+                webView.setBodyPlaceholder(_bodyPlaceholder)
                 webView.visibility = View.VISIBLE
                 progressView.visibility = View.GONE
             }
