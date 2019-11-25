@@ -2,8 +2,9 @@
 const webpack = require('webpack');
 const path = require('path');
 const bootstrap = require('bootstrap-styl');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-const entry = ['@babel/polyfill', './js/index.js'];
+const entry = './js/index.js';
 const plugins = [
   new webpack.LoaderOptionsPlugin({
     test: /\.styl$/,
@@ -14,13 +15,14 @@ const plugins = [
       NODE_ENV: JSON.stringify('production')
     }
   }),
-  new webpack.optimize.UglifyJsPlugin()
+  new UglifyJSPlugin()
 ];
 
 module.exports = {
   plugins,
   entry,
   cache: true,
+  mode: 'production',
   output: {
     path: path.resolve(__dirname, 'js/'),
     filename: 'bundle.js'
@@ -30,7 +32,12 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       },
       {
         test: /\.css$/,
