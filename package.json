@@ -14,23 +14,21 @@
   "dependencies": {
     "bootstrap-styl": "^5.0.8",
     "classnames": "^2.2.5",
+    "core-js": "^3.4.2",
     "lodash": "^4.17.10",
     "oneteam-rte": "^2.2.4",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.47",
-    "@babel/core": "^7.0.0-beta.47",
-    "@babel/polyfill": "^7.0.0-beta.47",
-    "@babel/preset-es2015": "^7.0.0-beta.47",
-    "@babel/preset-es2016": "^7.0.0-beta.47",
-    "@babel/preset-es2017": "^7.0.0-beta.47",
-    "@babel/preset-react": "^7.0.0-beta.47",
-    "@babel/register": "^7.0.0-beta.47",
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/register": "^7.7.4",
     "babel-eslint": "^8.2.3",
-    "babel-loader": "^8.0.0-beta.2",
-    "babel-preset-power-assert": "^3.0.0-beta.1",
+    "babel-loader": "^8.0.6",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-plugin-babel": "^5.1.0",
@@ -42,8 +40,10 @@
     "style-loader": "^0.21.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^1.0.1",
-    "webpack": "^3.12.0",
-    "webpack-dev-server": "^2.11.2"
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }
