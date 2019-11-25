@@ -62,7 +62,8 @@ export default class Editor extends Component {
     }
     insertDownloadLink(...args) {
         if(this.editor) {
-            this.editor.insertAtomicBlock('FILE_PLACEHOLDER', 'IMMUTABLE', ...args);
+            this.editor.html += "<a href=\"" + arguments[0]["url"] + "\" target=\"_blank\">"+ arguments[0]["name"] +"</a>";
+            this.editor.focus();
         }
     }
     insertIFrame(tag) {
