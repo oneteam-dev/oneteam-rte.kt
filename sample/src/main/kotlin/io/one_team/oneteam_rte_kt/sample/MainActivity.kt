@@ -20,9 +20,12 @@ class MainActivity : AppCompatActivity() {
 
         // These are just examples. You should make users to choose files or images or link
         toolbar.addOnClickImageButtonListener {
-            editor?.insertImage("example",
+            /*editor?.insertImage("example",
                 originalUrl = URL("http://placehold.it/350x500"),
                 previewUrl = URL("http://placehold.it/350x150")
+            )*/
+            editor?.insertFile("example.pdf",
+                    url = URL("http://placehold.it/350x500")
             )
         }
 
