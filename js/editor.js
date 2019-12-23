@@ -150,6 +150,7 @@ export default class Editor extends Component {
                   placeholder= { this.state.placeholder }
                   atomicBlockRenderMap={{["FILE_PLACEHOLDER"]: FileLink}}
                   onKeyDown={this.handleKeyDown}
+                  emojiImagePath={ "https://cdn.jsdelivr.net/emojione/assets/svg/" }
                   ref={(c) => this.setEditor(c)} />
             </div>
         )
