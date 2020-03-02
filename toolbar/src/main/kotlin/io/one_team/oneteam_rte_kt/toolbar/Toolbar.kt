@@ -1,7 +1,6 @@
 package io.one_team.oneteam_rte_kt.toolbar
 
 import android.content.Context
-import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.ImageButton
