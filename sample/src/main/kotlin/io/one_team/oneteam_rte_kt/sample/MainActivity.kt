@@ -1,9 +1,9 @@
 package io.one_team.oneteam_rte_kt.sample
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.webkit.WebView
+import androidx.appcompat.app.AppCompatActivity
 import io.one_team.oneteam_rte_kt.core.Mentionable
 import kotlinx.android.synthetic.main.activity_main.*
 import java.net.URL
